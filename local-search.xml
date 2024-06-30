@@ -16,5 +16,205 @@
   
   
   
+  <entry>
+    <title>渗透测试 理解+摘录</title>
+    <link href="/jjzc.github.io/2022/12/26/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%20%E7%90%86%E8%A7%A3%E5%8F%8A%E6%91%98%E5%BD%95/"/>
+    <url>/jjzc.github.io/2022/12/26/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%20%E7%90%86%E8%A7%A3%E5%8F%8A%E6%91%98%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="渗透测试-理解-摘录"><a href="#渗透测试-理解-摘录" class="headerlink" title="渗透测试 理解+摘录"></a>渗透测试 理解+摘录</h1><span id="more"></span><p>渗透测试，是一套技术过程和方法论，是技术专家模拟一些“黑帽子”的动作和技术去尝试利用网络或信息系统。测试人员在具体和授权的指导原则下尝试规避信息系统的防护措施所使用的的方法、过程和规程，包括突破系统集成的安全特性。这种测试与技术评估、管理、操作设置和系统控制有关。通常情况下，仅评估信息系统建立时的安全性。目标网络系统管理员和技术人员或许不知道渗透测试正在进行。</p><p>在实践中有众多不同的渗透测试生命周期模型。目前为止我了解到的，认可较多的是EC-Council Certified Ethical Hacker定义和使用的方法和生命周期。整个过程包含五个阶段：侦察、扫描、获取访问、维持访问以及清除痕迹。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>理解摘录</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>渗透测试</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>激活函数的实验分析</title>
+    <link href="/jjzc.github.io/2022/06/05/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E5%88%86%E6%9E%90/"/>
+    <url>/jjzc.github.io/2022/06/05/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E5%88%86%E6%9E%90/</url>
+    
+    <content type="html"><![CDATA[<p>卷积神经网络中经常使用的激活函数有：Sigmoid函数、Tanh函数、ReLU函数、Softmax函数等，本文就关于这四类函数及其梯度图像进行对比分析，话不多说，上代码，看图！</p><span id="more"></span><h2 id="开始实验"><a href="#开始实验" class="headerlink" title="开始实验"></a>开始实验</h2><h3 id="1-Sigmoid函数"><a href="#1-Sigmoid函数" class="headerlink" title="1.Sigmoid函数"></a>1.Sigmoid函数</h3><p>函数代码及图像：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">sigmoid</span>(<span class="hljs-params">x</span>):<br>    y=<span class="hljs-number">1</span>/(<span class="hljs-number">1</span>+np.exp(-x))<br>    <span class="hljs-keyword">return</span> y<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_sigmoid</span>():<br>    x=np.arange(-<span class="hljs-number">8</span>,<span class="hljs-number">8</span>,<span class="hljs-number">0.2</span>)<br>    y=sigmoid(x)<br>    plt.plot(x,y)<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    plot_sigmoid()xxxxxxxxxx <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> npimport matplotlib.pyplot <span class="hljs-keyword">as</span> pltdef sigmoid(x):    y=<span class="hljs-number">1</span>/(<span class="hljs-number">1</span>+np.exp(-x))    <span class="hljs-keyword">return</span> ydef plot_sigmoid():    x=np.arange(-<span class="hljs-number">8</span>,<span class="hljs-number">8</span>,<span class="hljs-number">0.2</span>)    y=sigmoid(x)    plt.plot(x,y)    plt.show()<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:    plot_sigmoid()$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span>bash<br></code></pre></td></tr></table></figure><p><img src="https://s2.loli.net/2022/06/05/z4kbL2DeAOviFKZ.png"></p><p>Sigmoid梯度函数代码及图像</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_sigmoid</span>():<br>    x = np.arange(-<span class="hljs-number">8</span>, <span class="hljs-number">8</span>, <span class="hljs-number">0.2</span>)<br>    y = <span class="hljs-number">1</span>/(<span class="hljs-number">1</span>+np.exp(-x))<br>    dy = y*(<span class="hljs-number">1</span>-y)<br>    plt.plot(x, y, label=<span class="hljs-string">&#x27;Sigmoid&#x27;</span>, linestyle=<span class="hljs-string">&#x27;-&#x27;</span>, color=<span class="hljs-string">&#x27;red&#x27;</span>)<br>    plt.plot(x, dy, label=<span class="hljs-string">&#x27;Sigmoid derivative&#x27;</span>, linestyle=<span class="hljs-string">&#x27;-&#x27;</span>, color=<span class="hljs-string">&#x27;green&#x27;</span>)<br>    plt.legend([<span class="hljs-string">&#x27;Sigmoid&#x27;</span>, <span class="hljs-string">&#x27;Sigmoid derivative&#x27;</span>])<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    plot_sigmoid()<br></code></pre></td></tr></table></figure><p><img src="https://s2.loli.net/2022/06/05/DN9UHYWBrI7e5kM.png"></p><h3 id="2-Tanh函数"><a href="#2-Tanh函数" class="headerlink" title="2.Tanh函数"></a>2.Tanh函数</h3><p>函数代码及图像</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> math<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_tanh</span>():<br>    x = np.arange(-<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0.1</span>)<br>    y = ((math.e ** (x) - math.e ** (-x)) / (math.e ** (x) + math.e ** (-x)))<br>    plt.xlim(-<span class="hljs-number">4</span>, <span class="hljs-number">4</span>)<br>    plt.ylim(-<span class="hljs-number">1</span>, <span class="hljs-number">1.2</span>)<br>    ax = plt.gca()<br>    ax.spines[<span class="hljs-string">&#x27;right&#x27;</span>].set_color(<span class="hljs-string">&#x27;none&#x27;</span>)<br>    ax.spines[<span class="hljs-string">&#x27;top&#x27;</span>].set_color(<span class="hljs-string">&#x27;none&#x27;</span>)<br>    ax.xaxis.set_ticks_position(<span class="hljs-string">&#x27;bottom&#x27;</span>)<br>    ax.yaxis.set_ticks_position(<span class="hljs-string">&#x27;left&#x27;</span>)<br>    ax.spines[<span class="hljs-string">&#x27;bottom&#x27;</span>].set_position((<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-number">0</span>))<br>    ax.spines[<span class="hljs-string">&#x27;left&#x27;</span>].set_position((<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-number">0</span>))<br>    plt.plot(x,y)<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    plot_tanh()<br></code></pre></td></tr></table></figure><p><img src="https://s2.loli.net/2022/06/05/LHYwfVR1SCpWGFN.png"></p><p>Tanh梯度函数代码及图像</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> math<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_tanh</span>():<br>    x = np.arange(-<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">0.1</span>)<br>    y = ((math.e**(x)-math.e**(-x))/(math.e**(x)+math.e**(-x)))<br>    dy = <span class="hljs-number">1</span>-y*y<br>    plt.xlim(-<span class="hljs-number">4</span>,<span class="hljs-number">4</span>)<br>    plt.ylim(-<span class="hljs-number">1</span>,<span class="hljs-number">1.2</span>)<br>    ax = plt.gca()<br>    ax.spines[<span class="hljs-string">&#x27;right&#x27;</span>].set_color(<span class="hljs-string">&#x27;none&#x27;</span>)<br>    ax.spines[<span class="hljs-string">&#x27;top&#x27;</span>].set_color(<span class="hljs-string">&#x27;none&#x27;</span>)<br>    ax.xaxis.set_ticks_position(<span class="hljs-string">&#x27;bottom&#x27;</span>)<br>    ax.yaxis.set_ticks_position(<span class="hljs-string">&#x27;left&#x27;</span>)<br>    ax.spines[<span class="hljs-string">&#x27;bottom&#x27;</span>].set_position((<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-number">0</span>))<br>    ax.spines[<span class="hljs-string">&#x27;left&#x27;</span>].set_position((<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-number">0</span>))<br>    plt.plot(x,y, label=<span class="hljs-string">&#x27;Tanh&#x27;</span>, linestyle=<span class="hljs-string">&#x27;-&#x27;</span>, color=<span class="hljs-string">&#x27;red&#x27;</span>)<br>    plt.plot(x,dy, label=<span class="hljs-string">&#x27;Tanh derivative&#x27;</span>, linestyle=<span class="hljs-string">&#x27;-&#x27;</span>, color=<span class="hljs-string">&#x27;green&#x27;</span>)<br>    plt.legend([<span class="hljs-string">&#x27;Tanh&#x27;</span>,<span class="hljs-string">&#x27;Tanh derivative&#x27;</span>])<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    plot_tanh()<br></code></pre></td></tr></table></figure><p><img src="https://s2.loli.net/2022/06/05/oCKGuz8SbDgpnX7.png"></p><h3 id="3-ReLU函数"><a href="#3-ReLU函数" class="headerlink" title="3.ReLU函数"></a>3.ReLU函数</h3><p>函数代码及图像</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">relu</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-keyword">return</span> np.maximum(<span class="hljs-number">0</span>,x)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_relu</span>():<br>    x = np.arange(-<span class="hljs-number">5.0</span>, <span class="hljs-number">5.0</span>, <span class="hljs-number">0.1</span>)<br>    plt.ylim([-<span class="hljs-number">1.0</span>, <span class="hljs-number">5.5</span>])<br>    y = relu(x)<br>    plt.plot(x,y)<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    plot_relu()<br></code></pre></td></tr></table></figure><p><img src="https://s2.loli.net/2022/06/05/PJz3bokKDCWyFZO.png"></p><p>ReLU梯度函数代码及图像</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_relu</span>():<br>    x = np.arange(-<span class="hljs-number">2.5</span>, <span class="hljs-number">2.5</span>, <span class="hljs-number">0.1</span>)<br>    plt.ylim([-<span class="hljs-number">0.5</span>, <span class="hljs-number">2.0</span>])<br>    y = np.maximum(<span class="hljs-number">0</span>,x)<br>    plt.plot(x,y,label=<span class="hljs-string">&#x27;ReLU&#x27;</span>,color=<span class="hljs-string">&#x27;red&#x27;</span>)<br><br>    x1 = np.linspace(-<span class="hljs-number">2</span>,<span class="hljs-number">0</span>)<br>    y1 = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)<br>    plt.plot(x1,y1,label=<span class="hljs-string">&#x27;ReLU derivative&#x27;</span>,color=<span class="hljs-string">&#x27;green&#x27;</span>)<br>    x2 = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)<br>    y2 = np.linspace(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)<br>    plt.plot(x2,y2,label=<span class="hljs-string">&#x27;ReLU derivative&#x27;</span>,color=<span class="hljs-string">&#x27;green&#x27;</span>)<br>    x3 = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)<br>    y3 = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)<br>    plt.plot(x3,y3,label=<span class="hljs-string">&#x27;ReLU derivative&#x27;</span>,color=<span class="hljs-string">&#x27;green&#x27;</span>)<br><br>    plt.legend([<span class="hljs-string">&#x27;Sigmoid&#x27;</span>, <span class="hljs-string">&#x27;Sigmoid derivative&#x27;</span>])<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    plot_relu()<br></code></pre></td></tr></table></figure><p><img src="https://s2.loli.net/2022/06/05/PXeWS85u1IZOGnd.png"></p><h3 id="4-Softmax函数"><a href="#4-Softmax函数" class="headerlink" title="4.Softmax函数"></a>4.Softmax函数</h3><p>Softmax函数多用于分类任务使用，故Softmax函数也可称为归一化指数函数，这是二分类函数Sigmoid函数在多分类上的推广，目的就是将多分类的结果以概率的形式展现出来。</p><p>Softmax函数的核心在于soft，与之相对应的是Hardmax函数，很多场景之下我们都需要找出数组所有元素中值最大的元素，实质上都是在求Hardmax函数。Hardmax函数最大的特点就是只选出其中一个最大的值，也即非黑即白，然而在实际应用中这种方式并不是很适用，比如对于文本分类，一篇文章中或多或少会包含着各种主题信息，我们更期望得到文章对于每个可能的文本类别的概率值（置信度），也可以理解为属于对应类别的可信度，所以此时就用到了Softmax函数，该函数的含义就在于不再唯一的确定某一个最大值，而是为每一个输出分类的结果都赋予一个概率值，表示属于每个类别的可能性。</p><p>Softmax函数可以将输出映射到0至1区间内，输出值累加为1，即输出值可看作是概率最大的值。由于是计算概率值，所以无法绘制函数图像。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Artificial Intelligence</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>激活函数</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>记Gitee+PicGo失败原因</title>
+    <link href="/jjzc.github.io/2022/05/29/%E8%AE%B0gitee+picgo%E5%A4%B1%E8%B4%A5%E5%8E%9F%E5%9B%A0/"/>
+    <url>/jjzc.github.io/2022/05/29/%E8%AE%B0gitee+picgo%E5%A4%B1%E8%B4%A5%E5%8E%9F%E5%9B%A0/</url>
+    
+    <content type="html"><![CDATA[<p>记gitee+picgo失败原因</p><span id="more"></span><h2 id="1-原因"><a href="#1-原因" class="headerlink" title="1.原因"></a>1.原因</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p>许久未使用picgo了，今天打开picgo，发现需要更新正式版，期待这个正式版很久了！！！</p><p>快速更新之后，试图往gitee上传图片，发现进度条结束后，gitee中并没有上传的图片，picgo中的相册里也没有，最关键的是picgo尽然没有任何报错信息！</p><p>无奈之余，开始了百度之旅…………………………….按照百度的各种方法实验后均没有效果，图片依然无法上传，我决定去picgo找原因，在“日志文件”中，我发现了其中的猫腻，看图：</p><p><img src="https://raw.githubusercontent.com/lamborcola/image/main/picgo%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF.jpg"></p><p><strong>图中的403即：HTTP 403 Forbidden 是“拒绝访问”，出现403表示服务器接收到了本次的请求，但是拒绝响应，拒绝执行该任务！</strong></p><p>尝试更换了Token，依然是同样的报错信息；</p><p>更换gitee账号，再次上传，同样的报错信息；</p><p>安装所有gitee相关的插件，依旧出错；</p><p>个人猜测，gitee对picgo的上传作出了限制；</p><h3 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2.解决方案"></a>2.解决方案</h3><p>目前来看，这个问题误解，可以更换图床，或者自己搭建一个。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Recode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Gitee PicGo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>JDK安装及配置</title>
+    <link href="/jjzc.github.io/2021/07/08/JDK%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/"/>
+    <url>/jjzc.github.io/2021/07/08/JDK%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h2 id="JDK安装及配置"><a href="#JDK安装及配置" class="headerlink" title="JDK安装及配置"></a>JDK安装及配置</h2><span id="more"></span><h3 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h3><ul><li><p>JDK官网下载地址：</p><p>[ORACLE]: <a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html</a>“ORACLE”<br>[OPENJDK]: <a href="http://openjdk.java.net/projects/jdk/">http://openjdk.java.net/projects/jdk/</a>“openJDK”</p></li></ul><h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><p>1.双击安装包进行安装</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/1.png"></p><p>2.点击下一步</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/2.png"></p><p>3.选择安装位置（可自由选择）</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/3.png"></p><p>4.点击“安装”进行安装</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/4.png"></p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/5.png"></p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/6.png"></p><h3 id="3-配置"><a href="#3-配置" class="headerlink" title="3.配置"></a>3.配置</h3><p>1.在Windows10操作系统中，“我的电脑”右键，选择属性</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/7.png"></p><p>2.选择“高级系统设置”</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/8.png"></p><p>3.选择“环境变量”</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/9.png"></p><p>4.设置“系统变量”，选择“新建”</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/10.png"></p><ul><li>新建变量：</li><li>变量名：JAVA_HOME</li><li>变量值：JDK 根目录</li><li>变量名：CLASSPATH</li><li>变量值：.;% JAVA_HOME%\lib\dt.jar;% JAVA_HOME%\lib\tools.jar;</li></ul><p>5.设置“Path”</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/11.png"></p><ul><li>点击新建，输入 % JAVA_HOME%\bin、% JAVA_HOME%\jre\bin</li><li>点击确定</li></ul><h3 id="4-验证安装"><a href="#4-验证安装" class="headerlink" title="4.验证安装"></a>4.验证安装</h3><blockquote><p>“win+R”输入”cmd“打开命令窗口</p><p>输入“java -version”、”java“、”javac“，若出现以下界面即证明安装成功</p></blockquote><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/javaversion.png"></p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/java.png"></p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/javac.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>安装教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>a+b=c</title>
+    <link href="/jjzc.github.io/2021/06/05/a+b=c/"/>
+    <url>/jjzc.github.io/2021/06/05/a+b=c/</url>
+    
+    <content type="html"><![CDATA[<h2 id="a-b-c"><a href="#a-b-c" class="headerlink" title="a+b&#x3D;c"></a>a+b&#x3D;c</h2><span id="more"></span><h3 id="JAVA解析"><a href="#JAVA解析" class="headerlink" title="JAVA解析"></a>JAVA解析</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String args[])</span>&#123;<br>        <span class="hljs-type">int</span> A=<span class="hljs-number">0</span>,B=<span class="hljs-number">0</span>,C=<span class="hljs-number">0</span>,D=<span class="hljs-number">0</span>;<br>        System.out.println(<span class="hljs-string">&quot;A:&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;B:&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;C:&quot;</span>);<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        A=data.nextInt();<br>        B=data.nextInt();<br>        D=data.nextInt();<br>        C=A+B;<br>        <span class="hljs-keyword">if</span>(D!=C)&#123;<br>            System.out.println(<span class="hljs-string">&quot;抱歉，你算错了&quot;</span>);<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            System.out.println(<span class="hljs-string">&quot;恭喜你答对了&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="Python解析"><a href="#Python解析" class="headerlink" title="Python解析"></a>Python解析</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">a=<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入a:&quot;</span>));<br>b=<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入b:&quot;</span>));<br>c=<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入c:&quot;</span>));<br><span class="hljs-built_in">sum</span>=a+b;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">sum</span>!=c):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;抱歉，你算错了&quot;</span>);<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;恭喜你答对了&quot;</span>);xxxxxxxxxx a=<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入a:&quot;</span>));b=<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入b:&quot;</span>));c=<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入c:&quot;</span>));<span class="hljs-built_in">sum</span>=a+b;<span class="hljs-keyword">if</span>(<span class="hljs-built_in">sum</span>!=c):    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;抱歉，你算错了&quot;</span>);<span class="hljs-keyword">else</span>:    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;恭喜你答对了&quot;</span>);$ hexo serverbash<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Code</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Java Python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>墨九屿</title>
+    <link href="/jjzc.github.io/2020/06/08/%E5%A2%A8%E4%B9%9D%E5%B1%BF/"/>
+    <url>/jjzc.github.io/2020/06/08/%E5%A2%A8%E4%B9%9D%E5%B1%BF/</url>
+    
+    <content type="html"><![CDATA[<div align = "center"><span id="more"></span><p>小猫乖乖，</p><p>一觉醒来，</p><p>已非昨天：</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/images/20200606113759.jpg"></p><p>满腹经纶，</p><p>帅男嫉妒，</p><p>靓女青睐，</p><p>抛个媚眼，</p><p>世界惊叹！</p><p>那时男儿，</p><p>心里坦然。</p><p>无愧于我，</p><p>人生超然！</p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/images/20200606113325.jpg"></p></div><hr><div align = "center"><ul><li>本文作者原创，版权归作者所有，任何形式转载请联系授权，未经授权，转载必究！！！</li></ul></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>family</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>poet</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>精美图片</title>
+    <link href="/jjzc.github.io/2020/06/06/%E5%9B%BE%E7%89%87/"/>
+    <url>/jjzc.github.io/2020/06/06/%E5%9B%BE%E7%89%87/</url>
+    
+    <content type="html"><![CDATA[<p>上传图片</p><p>精美图片</p><span id="more"></span><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/images/20200606113325.jpg"></p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/images/20200606113738.jpg"></p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/images/20200606113753.jpg"></p><p><img src="https://gitee.com/lamjjzc/picgo/raw/master/images/20200606113759.jpg"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Picture</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>image</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>让阳光照进生命</title>
+    <link href="/jjzc.github.io/2020/06/05/%E8%AE%A9%E9%98%B3%E5%85%89%E7%85%A7%E8%BF%9B%E7%94%9F%E5%91%BD/"/>
+    <url>/jjzc.github.io/2020/06/05/%E8%AE%A9%E9%98%B3%E5%85%89%E7%85%A7%E8%BF%9B%E7%94%9F%E5%91%BD/</url>
+    
+    <content type="html"><![CDATA[<p>　   我喜欢阳光，喜欢阳光下推开的每一扇温暖的心窗。</p><span id="more"></span><p>　　坐在窗前翻阅阳光，一页页的梦想就会生出翅膀，在蓝天和白云之间自由的飞翔。曾经寂寞的盘旋，曾经起落的创伤，都会在阳光下找到可以歇落疲惫的方向，都可以找到舔食修复的地方。</p><p>　　翻阅阳光，就有了春天的希望，即使刚让北风刮得遍体鳞伤，也会让泪水和微笑一起在阳光里飞扬。</p><p>　　阳光让心胸变得宽阔，让脆弱的生命变得顽强。闭上眼睛，用一颗清澈的心去聆听阳光，每一页都会有潺潺的水声，每一段都会有小鸟明亮的歌唱。</p><p>　　翻阅阳光，把晴朗的天空装进纯净的胸膛，让淋湿的故事重新象花朵一样的绽放。阳光让黑夜不再刺伤眼睛，阳光让青涩的季节长成丰盈的金黄。阳光让苦难顺流而下，阳光让忧伤淡成一两片白帆消失在曾经苍茫的远方。748219美文网</p><p>　　翻阅阳光，去听种子顶破土地的炸响，把枯朽的树木摇曳成绿色的海洋。翻阅阳光，不再怕零落的枝干濒临衰老的终结，不再怕青春的脚步踏出时间的长廊。只要心存阳光，生命就会再次的繁衍，再次的怒放。到那时啊，一缕缕，一弯弯，一浪浪都将是迭荡喧腾的新绿，都将是无法阻挡，无法摧毁的蓬勃和茁壮。</p><p>　　也许有一天，明媚的阳光会被翻阅成日暮西山，落叶夕阳。也许有一天，站立的生命也会倒成一粒泥土，或一抹暗淡的灰黄。无悔的是：我们曾经在阳光里走过，曾经用最真挚的心翻阅过最炽热的阳光。我们曾经在阳光的照耀下幸福的生长，曾经在阳光的合声里和所有的生命一起快乐的歌唱。</p><p>　　翻阅阳光就是翻阅生命，翻阅生命就是让每一个日子都充满温暖，都充满美丽的阳光。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Passage</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>passage</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
   
 </search>
