@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/1.png">
-  <link rel="icon" href="/img/1.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/jjzc.github.io/img/1.png">
+  <link rel="icon" href="/jjzc.github.io/img/1.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,17 +19,17 @@
     <meta name="description" content="卷积神经网络中经常使用的激活函数有：Sigmoid函数、Tanh函数、ReLU函数、Softmax函数等，本文就关于这四类函数及其梯度图像进行对比分析，话不多说，上代码，看图！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="激活函数的实验分析">
-<meta property="og:url" content="https://jjzc.github.io/2022/06/05/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E5%88%86%E6%9E%90/index.html">
+<meta property="og:url" content="https://lamborcola.github.io/jjzc.github.io/2022/06/05/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E9%AA%8C%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="禁忌之城">
 <meta property="og:description" content="卷积神经网络中经常使用的激活函数有：Sigmoid函数、Tanh函数、ReLU函数、Softmax函数等，本文就关于这四类函数及其梯度图像进行对比分析，话不多说，上代码，看图！">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://jjzc.github.io/img/10.jpg">
+<meta property="og:image" content="https://lamborcola.github.io/jjzc.github.io/img/10.jpg">
 <meta property="article:published_time" content="2022-06-05T02:15:03.000Z">
 <meta property="article:modified_time" content="2022-06-06T06:10:38.938Z">
 <meta property="article:author" content="禁忌之城">
 <meta property="article:tag" content="激活函数">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jjzc.github.io/img/10.jpg">
+<meta name="twitter:image" content="https://lamborcola.github.io/jjzc.github.io/img/10.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -59,12 +59,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/jjzc.github.io/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/jjzc.github.io/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/jjzc.github.io/css/highlight-dark.css" />
   
 
 
@@ -73,15 +73,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"jjzc.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"ZPyAkzzeUeRtdPTNt7qMMClE-MdYXbMMI","app_key":"IfchpME7F2NQWungOgca4kJg","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lamborcola.github.io","root":"/jjzc.github.io/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"ZPyAkzzeUeRtdPTNt7qMMClE-MdYXbMMI","app_key":"IfchpME7F2NQWungOgca4kJg","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/jjzc.github.io/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="/jjzc.github.io/js/utils.js" ></script>
+  <script  src="/jjzc.github.io/js/color-schema.js" ></script>
   
 
 
@@ -98,7 +98,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/jjzc.github.io/">
       <strong>禁忌之城</strong>
     </a>
 
@@ -117,7 +117,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
+              <a class="nav-link" href="/jjzc.github.io/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>主页</span>
               </a>
@@ -129,7 +129,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
+              <a class="nav-link" href="/jjzc.github.io/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -141,7 +141,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
+              <a class="nav-link" href="/jjzc.github.io/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -153,7 +153,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
+              <a class="nav-link" href="/jjzc.github.io/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -165,7 +165,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
+              <a class="nav-link" href="/jjzc.github.io/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -177,7 +177,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
+              <a class="nav-link" href="/jjzc.github.io/links/" target="_self">
                 <i class="iconfont icon-link-fill"></i>
                 <span>友链</span>
               </a>
@@ -207,7 +207,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/10.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/jjzc.github.io/img/10.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -319,27 +319,27 @@
 <h2 id="开始实验"><a href="#开始实验" class="headerlink" title="开始实验"></a>开始实验</h2><h3 id="1-Sigmoid函数"><a href="#1-Sigmoid函数" class="headerlink" title="1.Sigmoid函数"></a>1.Sigmoid函数</h3><p>函数代码及图像：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">sigmoid</span>(<span class="hljs-params">x</span>):<br>    y=<span class="hljs-number">1</span>/(<span class="hljs-number">1</span>+np.exp(-x))<br>    <span class="hljs-keyword">return</span> y<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_sigmoid</span>():<br>    x=np.arange(-<span class="hljs-number">8</span>,<span class="hljs-number">8</span>,<span class="hljs-number">0.2</span>)<br>    y=sigmoid(x)<br>    plt.plot(x,y)<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    plot_sigmoid()xxxxxxxxxx <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> npimport matplotlib.pyplot <span class="hljs-keyword">as</span> pltdef sigmoid(x):    y=<span class="hljs-number">1</span>/(<span class="hljs-number">1</span>+np.exp(-x))    <span class="hljs-keyword">return</span> ydef plot_sigmoid():    x=np.arange(-<span class="hljs-number">8</span>,<span class="hljs-number">8</span>,<span class="hljs-number">0.2</span>)    y=sigmoid(x)    plt.plot(x,y)    plt.show()<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:    plot_sigmoid()$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span>bash<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2022/06/05/z4kbL2DeAOviFKZ.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/06/05/z4kbL2DeAOviFKZ.png" srcset="/jjzc.github.io/img/loading.gif" lazyload></p>
 <p>Sigmoid梯度函数代码及图像</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_sigmoid</span>():<br>    x = np.arange(-<span class="hljs-number">8</span>, <span class="hljs-number">8</span>, <span class="hljs-number">0.2</span>)<br>    y = <span class="hljs-number">1</span>/(<span class="hljs-number">1</span>+np.exp(-x))<br>    dy = y*(<span class="hljs-number">1</span>-y)<br>    plt.plot(x, y, label=<span class="hljs-string">&#x27;Sigmoid&#x27;</span>, linestyle=<span class="hljs-string">&#x27;-&#x27;</span>, color=<span class="hljs-string">&#x27;red&#x27;</span>)<br>    plt.plot(x, dy, label=<span class="hljs-string">&#x27;Sigmoid derivative&#x27;</span>, linestyle=<span class="hljs-string">&#x27;-&#x27;</span>, color=<span class="hljs-string">&#x27;green&#x27;</span>)<br>    plt.legend([<span class="hljs-string">&#x27;Sigmoid&#x27;</span>, <span class="hljs-string">&#x27;Sigmoid derivative&#x27;</span>])<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    plot_sigmoid()<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2022/06/05/DN9UHYWBrI7e5kM.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/06/05/DN9UHYWBrI7e5kM.png" srcset="/jjzc.github.io/img/loading.gif" lazyload></p>
 <h3 id="2-Tanh函数"><a href="#2-Tanh函数" class="headerlink" title="2.Tanh函数"></a>2.Tanh函数</h3><p>函数代码及图像</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> math<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_tanh</span>():<br>    x = np.arange(-<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0.1</span>)<br>    y = ((math.e ** (x) - math.e ** (-x)) / (math.e ** (x) + math.e ** (-x)))<br>    plt.xlim(-<span class="hljs-number">4</span>, <span class="hljs-number">4</span>)<br>    plt.ylim(-<span class="hljs-number">1</span>, <span class="hljs-number">1.2</span>)<br>    ax = plt.gca()<br>    ax.spines[<span class="hljs-string">&#x27;right&#x27;</span>].set_color(<span class="hljs-string">&#x27;none&#x27;</span>)<br>    ax.spines[<span class="hljs-string">&#x27;top&#x27;</span>].set_color(<span class="hljs-string">&#x27;none&#x27;</span>)<br>    ax.xaxis.set_ticks_position(<span class="hljs-string">&#x27;bottom&#x27;</span>)<br>    ax.yaxis.set_ticks_position(<span class="hljs-string">&#x27;left&#x27;</span>)<br>    ax.spines[<span class="hljs-string">&#x27;bottom&#x27;</span>].set_position((<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-number">0</span>))<br>    ax.spines[<span class="hljs-string">&#x27;left&#x27;</span>].set_position((<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-number">0</span>))<br>    plt.plot(x,y)<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    plot_tanh()<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2022/06/05/LHYwfVR1SCpWGFN.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/06/05/LHYwfVR1SCpWGFN.png" srcset="/jjzc.github.io/img/loading.gif" lazyload></p>
 <p>Tanh梯度函数代码及图像</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> math<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_tanh</span>():<br>    x = np.arange(-<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">0.1</span>)<br>    y = ((math.e**(x)-math.e**(-x))/(math.e**(x)+math.e**(-x)))<br>    dy = <span class="hljs-number">1</span>-y*y<br>    plt.xlim(-<span class="hljs-number">4</span>,<span class="hljs-number">4</span>)<br>    plt.ylim(-<span class="hljs-number">1</span>,<span class="hljs-number">1.2</span>)<br>    ax = plt.gca()<br>    ax.spines[<span class="hljs-string">&#x27;right&#x27;</span>].set_color(<span class="hljs-string">&#x27;none&#x27;</span>)<br>    ax.spines[<span class="hljs-string">&#x27;top&#x27;</span>].set_color(<span class="hljs-string">&#x27;none&#x27;</span>)<br>    ax.xaxis.set_ticks_position(<span class="hljs-string">&#x27;bottom&#x27;</span>)<br>    ax.yaxis.set_ticks_position(<span class="hljs-string">&#x27;left&#x27;</span>)<br>    ax.spines[<span class="hljs-string">&#x27;bottom&#x27;</span>].set_position((<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-number">0</span>))<br>    ax.spines[<span class="hljs-string">&#x27;left&#x27;</span>].set_position((<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-number">0</span>))<br>    plt.plot(x,y, label=<span class="hljs-string">&#x27;Tanh&#x27;</span>, linestyle=<span class="hljs-string">&#x27;-&#x27;</span>, color=<span class="hljs-string">&#x27;red&#x27;</span>)<br>    plt.plot(x,dy, label=<span class="hljs-string">&#x27;Tanh derivative&#x27;</span>, linestyle=<span class="hljs-string">&#x27;-&#x27;</span>, color=<span class="hljs-string">&#x27;green&#x27;</span>)<br>    plt.legend([<span class="hljs-string">&#x27;Tanh&#x27;</span>,<span class="hljs-string">&#x27;Tanh derivative&#x27;</span>])<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    plot_tanh()<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2022/06/05/oCKGuz8SbDgpnX7.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/06/05/oCKGuz8SbDgpnX7.png" srcset="/jjzc.github.io/img/loading.gif" lazyload></p>
 <h3 id="3-ReLU函数"><a href="#3-ReLU函数" class="headerlink" title="3.ReLU函数"></a>3.ReLU函数</h3><p>函数代码及图像</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">relu</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-keyword">return</span> np.maximum(<span class="hljs-number">0</span>,x)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_relu</span>():<br>    x = np.arange(-<span class="hljs-number">5.0</span>, <span class="hljs-number">5.0</span>, <span class="hljs-number">0.1</span>)<br>    plt.ylim([-<span class="hljs-number">1.0</span>, <span class="hljs-number">5.5</span>])<br>    y = relu(x)<br>    plt.plot(x,y)<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    plot_relu()<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2022/06/05/PJz3bokKDCWyFZO.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/06/05/PJz3bokKDCWyFZO.png" srcset="/jjzc.github.io/img/loading.gif" lazyload></p>
 <p>ReLU梯度函数代码及图像</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_relu</span>():<br>    x = np.arange(-<span class="hljs-number">2.5</span>, <span class="hljs-number">2.5</span>, <span class="hljs-number">0.1</span>)<br>    plt.ylim([-<span class="hljs-number">0.5</span>, <span class="hljs-number">2.0</span>])<br>    y = np.maximum(<span class="hljs-number">0</span>,x)<br>    plt.plot(x,y,label=<span class="hljs-string">&#x27;ReLU&#x27;</span>,color=<span class="hljs-string">&#x27;red&#x27;</span>)<br><br>    x1 = np.linspace(-<span class="hljs-number">2</span>,<span class="hljs-number">0</span>)<br>    y1 = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)<br>    plt.plot(x1,y1,label=<span class="hljs-string">&#x27;ReLU derivative&#x27;</span>,color=<span class="hljs-string">&#x27;green&#x27;</span>)<br>    x2 = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)<br>    y2 = np.linspace(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)<br>    plt.plot(x2,y2,label=<span class="hljs-string">&#x27;ReLU derivative&#x27;</span>,color=<span class="hljs-string">&#x27;green&#x27;</span>)<br>    x3 = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)<br>    y3 = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)<br>    plt.plot(x3,y3,label=<span class="hljs-string">&#x27;ReLU derivative&#x27;</span>,color=<span class="hljs-string">&#x27;green&#x27;</span>)<br><br>    plt.legend([<span class="hljs-string">&#x27;Sigmoid&#x27;</span>, <span class="hljs-string">&#x27;Sigmoid derivative&#x27;</span>])<br>    plt.show()<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    plot_relu()<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2022/06/05/PXeWS85u1IZOGnd.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/06/05/PXeWS85u1IZOGnd.png" srcset="/jjzc.github.io/img/loading.gif" lazyload></p>
 <h3 id="4-Softmax函数"><a href="#4-Softmax函数" class="headerlink" title="4.Softmax函数"></a>4.Softmax函数</h3><p>Softmax函数多用于分类任务使用，故Softmax函数也可称为归一化指数函数，这是二分类函数Sigmoid函数在多分类上的推广，目的就是将多分类的结果以概率的形式展现出来。</p>
 <p>Softmax函数的核心在于soft，与之相对应的是Hardmax函数，很多场景之下我们都需要找出数组所有元素中值最大的元素，实质上都是在求Hardmax函数。Hardmax函数最大的特点就是只选出其中一个最大的值，也即非黑即白，然而在实际应用中这种方式并不是很适用，比如对于文本分类，一篇文章中或多或少会包含着各种主题信息，我们更期望得到文章对于每个可能的文本类别的概率值（置信度），也可以理解为属于对应类别的可信度，所以此时就用到了Softmax函数，该函数的含义就在于不再唯一的确定某一个最大值，而是为每一个输出分类的结果都赋予一个概率值，表示属于每个类别的可能性。</p>
 <p>Softmax函数可以将输出映射到0至1区间内，输出值累加为1，即输出值可看作是概率最大的值。由于是计算概率值，所以无法绘制函数图像。</p>
@@ -361,7 +361,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Artificial-Intelligence/" class="category-chain-item">Artificial Intelligence</a>
+  <a href="/jjzc.github.io/categories/Artificial-Intelligence/" class="category-chain-item">Artificial Intelligence</a>
   
   
 
@@ -376,7 +376,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" class="print-no-link">#激活函数</a>
+        <a href="/jjzc.github.io/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" class="print-no-link">#激活函数</a>
       
     </div>
   
@@ -389,7 +389,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>激活函数的实验分析</div>
-      <div>https://jjzc.github.io/2022/06/05/激活函数的实验分析/</div>
+      <div>https://lamborcola.github.io/jjzc.github.io/2022/06/05/激活函数的实验分析/</div>
     </div>
     <div class="license-meta">
       
@@ -438,7 +438,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/26/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%20%E7%90%86%E8%A7%A3%E5%8F%8A%E6%91%98%E5%BD%95/" title="渗透测试 理解+摘录">
+                      <a href="/jjzc.github.io/2022/12/26/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%20%E7%90%86%E8%A7%A3%E5%8F%8A%E6%91%98%E5%BD%95/" title="渗透测试 理解+摘录">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">渗透测试 理解+摘录</span>
                         <span class="visible-mobile">Previous</span>
@@ -448,7 +448,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/29/%E8%AE%B0gitee+picgo%E5%A4%B1%E8%B4%A5%E5%8E%9F%E5%9B%A0/" title="记Gitee+PicGo失败原因">
+                      <a href="/jjzc.github.io/2022/05/29/%E8%AE%B0gitee+picgo%E5%A4%B1%E8%B4%A5%E5%8E%9F%E5%9B%A0/" title="记Gitee+PicGo失败原因">
                         <span class="hidden-mobile">记Gitee+PicGo失败原因</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -670,8 +670,8 @@ setInterval("createtime()", 250);
 
 <script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/jjzc.github.io/js/events.js" ></script>
+<script  src="/jjzc.github.io/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -693,7 +693,7 @@ setInterval("createtime()", 250);
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="/jjzc.github.io/js/img-lazyload.js" ></script>
   
 
 
@@ -819,7 +819,7 @@ setInterval("createtime()", 250);
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/jjzc.github.io/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -829,7 +829,7 @@ setInterval("createtime()", 250);
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="/jjzc.github.io/js/boot.js" ></script>
 
 
   
